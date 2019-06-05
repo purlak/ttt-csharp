@@ -4,10 +4,10 @@ using tictactoe;
 
 namespace tictactoe.Tests
 {
-  public class Test
+  public class ProgramTest
   {
     [Fact]
-    public void Test2()
+    public void Welcome()
     {
       var program = new Program();
       Assert.Equal("Welcome to Tic Tac Toe!", program.Welcome());
