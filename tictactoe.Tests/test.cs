@@ -4,19 +4,13 @@ using tictactoe;
 
 namespace tictactoe.Tests
 {
-    public class Test
+  public class Test
+  {
+    [Fact]
+    public void Test2()
     {
-        [Fact]
-        public void Test1()
-        {
-          Assert.Equal(2, 2);
-        }
-
-        [Fact]
-        public void Test2()
-        {
-          var program = new Program();
-          Assert.Equal("Hello", program.TestMethod());
-        }
+      var program = new Program();
+      Assert.Equal("Welcome to Tic Tac Toe!", program.Welcome());
     }
+  }
 }

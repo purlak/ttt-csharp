@@ -2,18 +2,21 @@
 
 namespace tictactoe
 {
-    public class Program
+  public class Program
+  {
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var program = new Program();
-            program.TestMethod();
-        }
+      var program = new Program();
+      program.Welcome();
 
-        public string TestMethod()
-        {
-            Console.WriteLine("Hello");
-            return "Hello";
-        }
+      var board = new Board();
+      board.DisplayBoard();
     }
+
+    public string Welcome()
+    {
+      Console.WriteLine("Welcome to Tic Tac Toe!");
+      return "Welcome to Tic Tac Toe!";
+    }
+  }
 }
