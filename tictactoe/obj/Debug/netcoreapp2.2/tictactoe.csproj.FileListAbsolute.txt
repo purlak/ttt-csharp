@@ -1,0 +1,11 @@
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/bin/Debug/netcoreapp2.2/tictactoe.deps.json
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/bin/Debug/netcoreapp2.2/tictactoe.runtimeconfig.json
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/bin/Debug/netcoreapp2.2/tictactoe.runtimeconfig.dev.json
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/bin/Debug/netcoreapp2.2/tictactoe.dll
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/bin/Debug/netcoreapp2.2/tictactoe.pdb
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/obj/Debug/netcoreapp2.2/tictactoe.csprojAssemblyReference.cache
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/obj/Debug/netcoreapp2.2/tictactoe.csproj.CoreCompileInputs.cache
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/obj/Debug/netcoreapp2.2/tictactoe.AssemblyInfoInputs.cache
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/obj/Debug/netcoreapp2.2/tictactoe.AssemblyInfo.cs
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/obj/Debug/netcoreapp2.2/tictactoe.dll
+/Users/purnima8l/development/apprentice/ttt-csharp/tictactoe/obj/Debug/netcoreapp2.2/tictactoe.pdb
