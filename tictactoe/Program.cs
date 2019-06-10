@@ -4,19 +4,20 @@ namespace tictactoe
 {
   public class Program
   {
-    static void Main(string[] args)
+    static void Main()
     {
-      var program = new Program();
-      program.Welcome();
-
-      var board = new Board();
-      board.DisplayBoard();
+      Welcome();
+      DisplayBoard();
     }
 
-    public string Welcome()
+    static void Welcome()
     {
-      Console.WriteLine("Welcome to Tic Tac Toe!");
-      return "Welcome to Tic Tac Toe!";
+      DisplayText.Call(Content.Welcome());
+    }
+
+    static void DisplayBoard()
+    {
+      new Board().DisplayBoard();
     }
   }
 }
