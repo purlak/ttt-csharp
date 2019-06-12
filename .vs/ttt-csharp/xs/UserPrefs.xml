@@ -1,17 +1,20 @@
 ﻿<Properties StartupConfiguration="{B16D8517-341C-4595-B798-5710A267D002}|Default">
   <MonoDevelop.Ide.ItemProperties.tictactoe PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="tictactoe.Tests/program.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="tictactoe/StartGame.cs">
     <Files>
-      <File FileName="tictactoe.Tests/program.cs" Line="14" Column="1" />
+      <File FileName="tictactoe/Game.cs" Line="18" Column="1" />
+      <File FileName="tictactoe/StartGame.cs" Line="41" Column="1" />
+      <File FileName="tictactoe/DispayText.cs" Line="13" Column="1" />
+      <File FileName="tictactoe/Board.cs" Line="24" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="ttt-csharp" expanded="True">
-            <Node name="tictactoe" expanded="True" />
-            <Node name="tictactoe.Tests" expanded="True">
-              <Node name="program.cs" selected="True" />
+            <Node name="tictactoe" expanded="True">
+              <Node name="StartGame.cs" selected="True" />
             </Node>
+            <Node name="tictactoe.Tests" expanded="True" />
           </Node>
         </State>
       </Pad>

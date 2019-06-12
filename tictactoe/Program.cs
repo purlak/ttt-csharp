@@ -1,24 +1,12 @@
-﻿using System;
-
-namespace tictactoe
+﻿namespace tictactoe
 {
     public class Program
     {
         public static void Main()
         {
-            GetWelcome();
-            DisplayBoard();
-        }
+            var startGame = new StartGame(); 
+            startGame.Menu();
 
-        public static string GetWelcome()
-        {
-            DisplayText.Call(Content.Welcome());
-            return "Welcome to Tic Tac Toe!";
-        }
-
-        private static void DisplayBoard()
-        {
-            new Board().DisplayBoard();
         }
     }
 }
