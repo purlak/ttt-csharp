@@ -5,10 +5,9 @@ namespace tictactoe.Tests
     public class ProgramTest
     {
         [Fact]
-        public void Welcome()
+        public void GetWelcome()
         {
-            var program = new Program();
-            Assert.Equal("Welcome to Tic Tac Toe!", program.Welcome());
+            Assert.Equal("Welcome to Tic Tac Toe!", Program.GetWelcome());
         }
     }
 }

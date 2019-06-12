@@ -2,7 +2,7 @@ using System;
 
 namespace tictactoe
 {
-    public class DisplayText
+    public static class DisplayText
     {
         public static void Call(string text)
         {

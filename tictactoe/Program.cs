@@ -1,19 +1,24 @@
-﻿namespace tictactoe
+﻿using System;
+
+namespace tictactoe
 {
     public class Program
     {
-        static void Main()
+        public static void Main()
         {
-            Welcome();
+            GetWelcome();
             DisplayBoard();
         }
 
-        static string Welcome()
+        public static string GetWelcome()
         {
             DisplayText.Call(Content.Welcome());
-            return ("Welcome to Tic Tac Toe!");
+            return "Welcome to Tic Tac Toe!";
         }
 
-        static void DisplayBoard() => new Board().DisplayBoard();
+        private static void DisplayBoard()
+        {
+            new Board().DisplayBoard();
+        }
     }
 }

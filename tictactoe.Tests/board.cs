@@ -8,7 +8,8 @@ namespace tictactoe.Tests
         public void DisplayBoard()
         {
             var board = new Board();
-            Assert.Equal(new string[9], board.DisplayBoard());
+            string[] cells = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+            Assert.Equal(cells, board.DisplayBoard());
         }
     }
 }
