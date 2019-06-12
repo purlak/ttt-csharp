@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{B16D8517-341C-4595-B798-5710A267D002}|Default">
+  <MonoDevelop.Ide.ItemProperties.tictactoe PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="tictactoe.Tests/program.cs">
+    <Files>
+      <File FileName="tictactoe.Tests/program.cs" Line="15" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ttt-csharp" expanded="True">
+            <Node name="tictactoe" expanded="True" />
+            <Node name="tictactoe.Tests" expanded="True">
+              <Node name="program.cs" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="ttt-csharp" expanded="True" selected="True" />
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

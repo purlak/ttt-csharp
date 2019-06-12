@@ -1,12 +1,10 @@
-using System;
-
 namespace tictactoe
 {
-  public class Content
-  {
-    public static string Welcome()
+    public static class Content
     {
-      return ("Welcome to Tic Tac Toe!");
+        public static string Welcome()
+        {
+            return ("Welcome to Tic Tac Toe!");
+        }
     }
-  }
 }

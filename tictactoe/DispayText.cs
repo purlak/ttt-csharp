@@ -2,11 +2,11 @@ using System;
 
 namespace tictactoe
 {
-  public class DisplayText
-  {
-    public static void Call(string text)
+    public class DisplayText
     {
-      Console.WriteLine(text);
+        public static void Call(string text)
+        {
+            Console.WriteLine(text);
+        }
     }
-  }
 }
