@@ -1,10 +1,12 @@
+using System;
+
 namespace tictactoe
 {
     public class Board
 
     {
         private DisplayText displayText;
-        string[] cells = { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        public string[] cells = { " ", " ", " ", " ", " ", " ", " ", " ", " " };
 
         public Board()
         {
@@ -17,7 +19,11 @@ namespace tictactoe
             displayText.Call($" {cells[3]} | {cells[4]} | {cells[5]} ");
             displayText.Call("-----------");
             displayText.Call($" {cells[6]} | {cells[7]} | {cells[8]} ");
-            //return cells;
+        }
+
+        public string UpdateBoard(int input, HumanPlayer currentPlayer)
+        {
+            return cells[input - 1] = currentPlayer.marker;
         }
     }
 }
