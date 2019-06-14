@@ -5,18 +5,18 @@ namespace tictactoe
     public class HumanPlayer
     {
         public string marker;
-        private DisplayText displayText;
+        private ConsoleInterface console;
 
         public HumanPlayer(string _marker)
         {
             marker = _marker;
-            displayText = new DisplayText();
+            console = new ConsoleInterface();
         }
 
         public string Move(Board board)
         {
-            displayText.Call(Content.GetPosition());
-            string input = Console.ReadLine();
+            console.Call(Content.GetPosition());
+            string input = console.GetInput();
             return input;
         }
     }

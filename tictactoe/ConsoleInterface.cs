@@ -2,11 +2,16 @@ using System;
 
 namespace tictactoe
 {
-    public class DisplayText
+    public class ConsoleInterface : IUserInterface
     {
         public void Call(string text)
         {
             Console.WriteLine(text);
+        }
+
+        public string GetInput()
+        {
+            return Console.ReadLine();
         }
     }
 }

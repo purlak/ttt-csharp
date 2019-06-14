@@ -17,7 +17,7 @@ namespace tictactoe
                 board.cells[1] == board.cells[2] &&
                 board.cells[0] != " "
                 )
-            { 
+            {
                 return true;
             }
 
@@ -89,14 +89,7 @@ namespace tictactoe
 
         public bool Draw(Board board)
         {
-            if (moves.Full(board.cells) && !Won(board))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return moves.Full(board.cells);
         }
     }
 }

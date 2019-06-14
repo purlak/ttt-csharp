@@ -5,10 +5,6 @@ namespace tictactoe
 {
     public class Moves
     {
-        public Moves()
-        {
-        }
-
         public bool Full(string[] cells)
         {
             bool val = Array.Exists(cells,
@@ -21,7 +17,7 @@ namespace tictactoe
 
         public bool ValidMove(Board board, int input)
         {
-            if (!(Taken(board,input) && Between(input)))
+            if (!(Taken(board, input) && Between(input)))
             {
                 return true;
             }
@@ -50,5 +46,5 @@ namespace tictactoe
         {
             return (cells.Count(cell => cell == "X" || cell == "O"));
         }
-   }
+    }
 }

@@ -4,9 +4,9 @@
     {
         public static void Main()
         {
-            var startGame = new StartGame(); 
+            ConsoleInterface displayText = new ConsoleInterface();
+            StartGame startGame = new StartGame(displayText);
             startGame.Menu();
-
         }
     }
 }

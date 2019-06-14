@@ -6,12 +6,12 @@ namespace tictactoe
 
     {
         private Game game;
-        private DisplayText displayText;
+        private IUserInterface _console;
 
-        public StartGame()
+        public StartGame(IUserInterface console)
         {
             game = new Game();
-            displayText = new DisplayText();
+            _console = console;
         }
 
         public void Menu() 
@@ -20,10 +20,10 @@ namespace tictactoe
             GetUserInput();
         }
 
-        private void GetUserInput()
+        public void GetUserInput()
         {
-            displayText.Call(Content.GameOptions());
-            displayText.Call(Content.Menu());
+            _console.Call(Content.GameOptions());
+            _console.Call(Content.Menu());
             string userInput = Console.ReadLine();
             switch (userInput)
             {
@@ -32,7 +32,7 @@ namespace tictactoe
                     break;
 
                 default:
-                    displayText.Call(Content.InvalidOption());
+                    _console.Call(Content.InvalidOption());
                     GetUserInput();
                     break;
             }
@@ -41,7 +41,7 @@ namespace tictactoe
 
         public void GetWelcome()
         {
-            displayText.Call(Content.Welcome());
+            _console.Call(Content.Welcome());
         }
     }
 }
