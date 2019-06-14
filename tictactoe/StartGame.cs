@@ -22,8 +22,8 @@ namespace tictactoe
 
         private void GetUserInput()
         {
-            displayText.Call("Game Options:");
-            displayText.Call("1. Human v. Human");
+            displayText.Call(Content.GameOptions());
+            displayText.Call(Content.Menu());
             string userInput = Console.ReadLine();
             switch (userInput)
             {
@@ -32,7 +32,7 @@ namespace tictactoe
                     break;
 
                 default:
-                    displayText.Call("Invalid Option. Try again.");
+                    displayText.Call(Content.InvalidOption());
                     GetUserInput();
                     break;
             }

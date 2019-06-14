@@ -82,14 +82,6 @@ namespace tictactoe
 
         }
 
-        //public object Winner(Board board)
-        //{
-        //    if (Won(board))
-        //    {
-        //        return board.cells[Won(board)[0]];
-        //    }
-        //}
-
         public bool Over(Board board)
         {
             return Won(board) || Draw(board);

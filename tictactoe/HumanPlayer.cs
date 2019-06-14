@@ -15,7 +15,7 @@ namespace tictactoe
 
         public string Move(Board board)
         {
-            displayText.Call("Enter board position [1-9]: ");
+            displayText.Call(Content.GetPosition());
             string input = Console.ReadLine();
             return input;
         }

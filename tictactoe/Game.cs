@@ -32,18 +32,18 @@ namespace tictactoe
 
             if (rules.Draw(board))
             {
-                displayText.Call("Game Draws.");
+                displayText.Call(Content.GameDraws());
             }
             else if (rules.Won(board))
             {
-                displayText.Call($"Game Over.Winner is {currentPlayer.marker}.");
+                displayText.Call(Content.GameOver(currentPlayer.marker));
             } 
         }
 
         public void Turn()
         {
             CurrentPlayer();
-            displayText.Call($"It's now {currentPlayer.marker}'s turn.");
+            displayText.Call(Content.Turn(currentPlayer.marker));
             int input = Int32.Parse(currentPlayer.Move(board));
             if (moves.ValidMove(board, input))
             {
@@ -52,14 +52,14 @@ namespace tictactoe
             }
             else if (moves.Between(input) == false)
             {
-                displayText.Call("\nThis move is not valid. Try again.");
+                displayText.Call(Content.InvalidMove());
                 CurrentPlayer();
                 Turn();
             }
 
             else if (moves.Taken(board, input))
             {
-                displayText.Call("\nLooks like that position is taken. Try again.");
+                displayText.Call(Content.Taken());
                 CurrentPlayer();
                 Turn();
 
