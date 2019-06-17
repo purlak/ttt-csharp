@@ -1,18 +1,7 @@
-﻿tictactoe/obj/Debug/netcoreapp2.2/*.cache
+﻿tictactoe/obj
+tictactoe/bin/Debug/netcoreapp2.2
+
+tictactoe.Tests/obj
+tictactoe.Tests/bin/Debug/netcoreapp2.2
+
 .vs/
-    tictactoe.Tests/obj/Debug/netcoreapp2.2/tictactoe.Tests.csprojAssemblyReference.cache
-    tictactoe/obj/project.assets.json
-    tictactoe/obj/tictactoe.csproj.nuget.cache
-    tictactoe/obj/tictactoe.csproj.nuget.g.props
-
-.vs/ttt-csharp/xs/project-cache/
-.vs/ttt-csharp/xs/sqlite3/
-tictactoe.Tests/obj/tictactoe.Tests.csproj.nuget.dgspec.json
-tictactoe/obj/tictactoe.csproj.nuget.dgspec.json
-
-tictactoe.Tests/obj/Debug/netcoreapp2.2/tictactoe.Tests.csprojAssemblyReference.cache
-tictactoe/bin/Debug/netcoreapp2.2/tictactoe.dll
- 
-tictactoe/bin/Debug/netcoreapp2.2/tictactoe.pdb
-tictactoe/obj/Debug/netcoreapp2.2/tictactoe.dll
-tictactoe/obj/Debug/netcoreapp2.2/tictactoe.pdb
