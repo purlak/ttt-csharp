@@ -15,6 +15,7 @@ namespace tictactoe.Tests
 
             Game game = new Game();
             var expected = "Welcome to TicTacToe!Game Options:1. Human v. Human";
+
             game.Menu();
 
             var actual = stringWriter.ToString().Replace(Environment.NewLine, "");
