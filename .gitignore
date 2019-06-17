@@ -11,3 +11,8 @@ tictactoe.Tests/obj/tictactoe.Tests.csproj.nuget.dgspec.json
 tictactoe/obj/tictactoe.csproj.nuget.dgspec.json
 
 tictactoe.Tests/obj/Debug/netcoreapp2.2/tictactoe.Tests.csprojAssemblyReference.cache
+tictactoe/bin/Debug/netcoreapp2.2/tictactoe.dll
+ 
+tictactoe/bin/Debug/netcoreapp2.2/tictactoe.pdb
+tictactoe/obj/Debug/netcoreapp2.2/tictactoe.dll
+tictactoe/obj/Debug/netcoreapp2.2/tictactoe.pdb

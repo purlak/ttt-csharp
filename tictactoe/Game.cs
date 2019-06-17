@@ -4,11 +4,18 @@ namespace tictactoe
 {
     public class Game
     {
+        private ConsoleInterface console;
+
+        public Game()
+        {
+            console = new ConsoleInterface();
+        }
+
         public void Menu()
         {
-            Console.WriteLine("Welcome to TicTacToe!");
-            Console.WriteLine("Game Options:");
-            Console.WriteLine("1. Human v. Human");
+            console.DisplayText("Welcome to TicTacToe!");
+            console.DisplayText("Game Options:");
+            console.DisplayText("1. Human v. Human");
         }
     }
 }
