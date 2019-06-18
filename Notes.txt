@@ -3,4 +3,9 @@
 - Display 'Game Options:'
 - Display '1. Human v. Human'
 - Write Test
+
+2. Get User Input & Display Empty Board
+- Get User Input
+- Display Empty Board
+- Write Test
  
