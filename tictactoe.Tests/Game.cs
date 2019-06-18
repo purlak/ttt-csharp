@@ -14,11 +14,11 @@ namespace tictactoe.Tests
             Console.SetOut(stringWriter);
 
             Game game = new Game();
-            var expected = "Welcome to TicTacToe!Game Options:1. Human v. Human";
+            var expected = "Welcome to TicTacToe!\nGame Options:\n1. Human v. Human\n";
 
             game.Menu();
 
-            var actual = stringWriter.ToString().Replace(Environment.NewLine, "");
+            var actual = stringWriter.ToString();
 
             Assert.Equal(expected, actual);
         }
