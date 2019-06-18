@@ -25,5 +25,13 @@ namespace tictactoe.Tests
 
             Assert.True(console.NumTimesDisplayTextisCalled > 0);
         }
+
+        [Fact]
+        public void UserInputTest()
+        {
+            game.UserInput();
+
+            Assert.True(console.NumTimesGetInputisCalled > 0);
+        }
     }
 }
