@@ -6,7 +6,7 @@ namespace tictactoe.Tests
 {
     public class ConsoleInterfaceTest
     {
-        private ConsoleInterface console;
+        public ConsoleInterface console;
 
         public ConsoleInterfaceTest()
         {
