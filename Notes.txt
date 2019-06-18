@@ -1,0 +1,6 @@
+﻿1. See Menu
+- Display 'Welcome to TicTacToe!'
+- Display 'Game Options:'
+- Display '1. Human v. Human'
+- Write Test
+ 
