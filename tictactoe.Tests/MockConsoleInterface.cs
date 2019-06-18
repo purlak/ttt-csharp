@@ -17,5 +17,10 @@ namespace tictactoe.Tests
             NumTimesGetInputisCalled++;
             return "1";
         }
+
+        public void DisplayBoard(Board board)
+        {
+            NumTimesDisplayTextisCalled++;
+        }
     }
 }

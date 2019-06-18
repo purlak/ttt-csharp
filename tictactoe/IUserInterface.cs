@@ -4,5 +4,6 @@
     {
         void DisplayText(string text);
         string GetInput();
+        void DisplayBoard(Board board);
     }
 }

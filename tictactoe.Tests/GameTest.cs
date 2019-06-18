@@ -7,9 +7,9 @@ namespace tictactoe.Tests
 {
     public class GameTest
     {
-        public MockConsoleInterface console;
+        private MockConsoleInterface console;
         private Board board;
-        public Game game;
+        private Game game;
 
         public GameTest()
         {
@@ -32,6 +32,14 @@ namespace tictactoe.Tests
             game.UserInput();
 
             Assert.True(console.NumTimesGetInputisCalled > 0);
+        }
+
+        [Fact]
+        public void PlayCallsConsoleDisplayBoard()
+        {
+            game.Play();
+
+            Assert.True(console.NumTimesDisplayTextisCalled > 0);
         }
     }
 }

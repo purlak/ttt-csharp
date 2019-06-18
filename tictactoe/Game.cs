@@ -39,7 +39,7 @@ namespace tictactoe
 
         public void Play()
         {
-            board.DisplayBoard();
+            _console.DisplayBoard(board);
         }
     }
 }
