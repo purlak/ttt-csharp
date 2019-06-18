@@ -7,20 +7,23 @@ namespace tictactoe.Tests
 {
     public class GameTest
     {
-       [Fact]
-       public void MenuTest()
+        public MockConsoleInterface console;
+        private Board board;
+        public Game game;
+
+        public GameTest()
         {
-            var stringWriter = new StringWriter();
-            Console.SetOut(stringWriter);
+            console = new MockConsoleInterface();
+            board = new Board(console);
+            game = new Game(console);
+        }
 
-            Game game = new Game();
-            var expected = "Welcome to TicTacToe!\nGame Options:\n1. Human v. Human\n";
-
+        [Fact]
+        public void MenuTest()
+        {
             game.Menu();
 
-            var actual = stringWriter.ToString();
-
-            Assert.Equal(expected, actual);
+            Assert.True(console.NumTimesDisplayTextisCalled > 0);
         }
     }
 }
