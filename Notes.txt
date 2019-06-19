@@ -8,4 +8,10 @@
 - Get User Input
 - Display Empty Board
 - Write Test
- 
+
+3. Human Plays Move 
+- Create human players
+- Get user input for move 
+- Update spot
+- Display Board
+- Write test

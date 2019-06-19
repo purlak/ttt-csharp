@@ -6,6 +6,7 @@ namespace tictactoe
     {
         private IUserInterface _console;
         private Board board;
+        private Player player;
 
         public Game(IUserInterface console)
         {
@@ -40,6 +41,15 @@ namespace tictactoe
         public void Play()
         {
             _console.DisplayBoard(board);
+            GetPlayers();
+            int position = player.Move();
+            board.UpdateBoard(position, player);
+            _console.DisplayBoard(board);
+        }
+
+        private void GetPlayers()
+        {
+            player = new Player("X", _console);
         }
     }
 }

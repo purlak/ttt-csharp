@@ -12,5 +12,9 @@ namespace tictactoe
             _console = console;
         }
 
+        public void UpdateBoard(int position, Player player)
+        {
+            cells[position - 1] = player._marker;
+        }
     }
 }
