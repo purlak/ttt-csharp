@@ -15,9 +15,9 @@ namespace tictactoe.Tests
         }
 
         [Fact]
-        public void MoveReturnsPosition()
+        public void GetMoveReturnsPosition()
         {
-            Assert.Equal(1, player.Move());
+            Assert.Equal(1, player.GetMove());
         }
     }
 }

@@ -42,8 +42,7 @@ namespace tictactoe
         {
             _console.DisplayBoard(board);
             GetPlayers();
-            int position = player.Move();
-            board.UpdateBoard(position, player);
+            board.UpdateBoard(player.GetMove(), player);
             _console.DisplayBoard(board);
         }
 

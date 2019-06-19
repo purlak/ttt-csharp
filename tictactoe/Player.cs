@@ -13,7 +13,7 @@ namespace tictactoe
             _console = console;
         }
 
-        public int Move()
+        public int GetMove()
         {
             _console.DisplayText("Enter Board Position [1-9]: ");
 
