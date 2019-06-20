@@ -4,18 +4,51 @@ namespace tictactoe
 {
     public class Game
     {
-        private ConsoleInterface console;
+        private IUserInterface _console;
+        private Board board;
+        private Player player;
 
-        public Game()
+        public Game(IUserInterface console)
         {
-            console = new ConsoleInterface();
+            _console = console;
+            board = new Board(console);
         }
 
         public void Menu()
         {
-            console.DisplayText("Welcome to TicTacToe!");
-            console.DisplayText("Game Options:");
-            console.DisplayText("1. Human v. Human");
+            _console.DisplayText("Welcome to TicTacToe!");
+            _console.DisplayText("Game Options:");
+            _console.DisplayText("1. Human v. Human");
+            UserInput();
+        }
+
+        public void UserInput()
+        {
+            _console.DisplayText("Select your option: ");
+            string input = _console.GetInput();
+            switch (input)
+            {
+                case "1":
+                    Play();
+                    break;
+                default:
+                    _console.DisplayText("Invalid Option. Try again.");
+                    UserInput();
+                    break;
+            }
+        }
+
+        public void Play()
+        {
+            _console.DisplayBoard(board);
+            GetPlayers();
+            board.UpdateBoard(player.GetMove(), player);
+            _console.DisplayBoard(board);
+        }
+
+        private void GetPlayers()
+        {
+            player = new Player("X", _console);
         }
     }
 }
