@@ -15,3 +15,6 @@
 - Update spot
 - Display Board
 - Write test
+
+4. Display Game Result
+- 
