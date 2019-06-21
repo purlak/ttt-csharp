@@ -6,12 +6,18 @@ namespace tictactoe
     {
         private IUserInterface _console;
         private Board board;
-        private Player player;
+        private Player player1;
+        private Player player2;
+        private Player currentPlayer;
+        private GameRules rules;
+        private Moves moves;
 
         public Game(IUserInterface console)
         {
             _console = console;
-            board = new Board(console);
+            board = new Board(_console);
+            rules = new GameRules();
+            moves = new Moves();
         }
 
         public void Menu()
@@ -42,13 +48,65 @@ namespace tictactoe
         {
             _console.DisplayBoard(board);
             GetPlayers();
-            board.UpdateBoard(player.GetMove(), player);
-            _console.DisplayBoard(board);
+            do
+            {
+                Turn();
+            } while (rules.Over(board) != true);
+
+            if (rules.Draw(board))
+            {
+                _console.DisplayText("Game Draws.");
+            }
+            else if (rules.Won(board))
+            {
+                _console.DisplayText($"Game Over.Winner is {currentPlayer._marker}.");
+            }
+        }
+
+        public void Turn()
+        {
+            CurrentPlayer();
+            _console.DisplayText($"It's now {currentPlayer._marker}'s turn.");
+            int input = currentPlayer.GetMove()                                                                                                                                                                                                                                               ;
+            if (moves.ValidMove(board, input))
+            {
+                board.UpdateBoard(input, currentPlayer);
+                _console.DisplayBoard(board);
+            }
+            else if (moves.Between(input) == false)
+            {
+                _console.DisplayText("Invalid Move. Try again.");
+                CurrentPlayer();
+                Turn();
+            }
+
+            else if (moves.Taken(board, input))
+            {
+                _console.DisplayText("This position is already taken. Try again.");
+                CurrentPlayer();
+                Turn();
+
+            }
         }
 
         private void GetPlayers()
         {
-            player = new Player("X", _console);
+            player1 = new Player("X", _console);
+            player2 = new Player("O", _console);
         }
+
+        public Player CurrentPlayer()
+        {
+            if (moves.TurnCount(board.cells) % 2 == 0)
+            {
+                currentPlayer = player1;
+            }
+            else
+            {
+                currentPlayer = player2;
+            }
+            return currentPlayer;
+        }
+
     }
 }
