@@ -14,6 +14,11 @@ namespace tictactoe
             board = new Board(console);
         }
 
+        public Board GetBoard()
+        {
+            return board;
+        }
+
         public void Menu()
         {
             _console.DisplayText("Welcome to TicTacToe!");
@@ -42,7 +47,11 @@ namespace tictactoe
         {
             _console.DisplayBoard(board);
             GetPlayers();
-            board.UpdateBoard(player.GetMove(), player);
+            do
+            {
+                board.UpdateBoard(player.GetMove(), player);
+            } while (false);
+
             _console.DisplayBoard(board);
         }
 

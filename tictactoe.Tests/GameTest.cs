@@ -2,20 +2,22 @@
 using System.IO;
 using Xunit;
 using tictactoe;
+using Xunit.Abstractions;
+using System.Collections.Generic;
 
 namespace tictactoe.Tests
 {
     public class GameTest
     {
         private MockConsoleInterface console;
-        private Board board;
         private Game game;
+        private ITestOutputHelper output;
 
-        public GameTest()
+        public GameTest(ITestOutputHelper output)
         {
             console = new MockConsoleInterface();
-            board = new Board(console);
             game = new Game(console);
+            this.output = output;
         }
 
         [Fact]
@@ -23,7 +25,7 @@ namespace tictactoe.Tests
         {
             game.Menu();
 
-            Assert.True(console.NumTimesDisplayTextisCalled > 0);
+            Assert.True(console.NumTimesDisplayTextIsCalled > 0);
         }
 
         [Fact]
@@ -31,7 +33,7 @@ namespace tictactoe.Tests
         {
             game.UserInput();
 
-            Assert.True(console.NumTimesGetInputisCalled > 0);
+            Assert.True(console.NumTimesGetInputIsCalled > 0);
         }
 
         [Fact]
@@ -39,7 +41,22 @@ namespace tictactoe.Tests
         {
             game.Play();
 
-            Assert.True(console.NumTimesDisplayTextisCalled > 0);
+            Assert.True(console.NumTimesDisplayBoardIsCalled > 0);
         }
+
+        //[Fact]
+        //public void GameLoopTest()
+        //{
+
+        //    console = new MockConsoleInterface();
+        //    console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+        //    game = new Game(console);
+        //    game.Menu();
+
+        //    Board board = game.GetBoard();
+
+        //    Assert.Equal(0, Array.FindAll(board.cells, element => element == " ").Length);
+        //}
     }
 }
