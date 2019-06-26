@@ -57,33 +57,10 @@ namespace tictactoe
             {
                 GetCurrentPlayer();
                 board.UpdateBoard(currentPlayer.GetMove(), currentPlayer);
+                _console.DisplayBoard(board);
             } while (rules.Over(board) != true);
 
             _console.DisplayBoard(board);
-        }
-
-        public void Turn()
-        {
-            GetCurrentPlayer();
-            _console.DisplayText($"It's now {currentPlayer._marker}'s turn.");
-            int input = currentPlayer.GetMove();
-            if (moves.ValidMove(board, input))
-            {
-                board.UpdateBoard(input, currentPlayer);
-                _console.DisplayBoard(board);
-            }
-            else if (moves.Between(input) == false)
-            {
-                _console.DisplayText("Invalid Move. Try again");
-                Turn();
-            }
-
-            else if (moves.Taken(board, input))
-            {
-                _console.DisplayText("Position take. Try again.");
-                GetCurrentPlayer();
-                Turn();
-            }
         }
 
         public void GetPlayers()

@@ -33,5 +33,18 @@ namespace tictactoe.Tests
 
             Assert.Equal(0, Array.FindAll(board.cells, element => element == " ").Length);
         }
+
+        [Fact]
+        public void GameCallsConsoleDisplayBoardTest()
+        {
+
+            console = new MockConsoleInterface();
+            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game = new Game(console);
+            game.Menu();
+            
+            Assert.True(console.NumTimesDisplayBoardIsCalled > 9);
+        }
     }
 }
