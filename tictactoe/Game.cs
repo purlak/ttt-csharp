@@ -55,8 +55,8 @@ namespace tictactoe
             GetPlayers();
             do
             {
-                Turn();
-                //board.UpdateBoard(currentPlayer.GetMove(), currentPlayer);
+                GetCurrentPlayer();
+                board.UpdateBoard(currentPlayer.GetMove(), currentPlayer);
             } while (rules.Over(board) != true);
 
             _console.DisplayBoard(board);
