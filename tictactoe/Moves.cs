@@ -7,12 +7,11 @@ namespace tictactoe
     {
         public bool Full(string[] cells)
         {
-            bool val = Array.Exists(cells,
-                cell =>
-                cell == " " ||
-                cell == null
-               );
-            return !val;
+            return !Array.Exists(cells,
+             cell =>
+             cell == " " ||
+             cell == null
+            );
         }
 
         public bool Taken(Board board, int input)
@@ -22,14 +21,7 @@ namespace tictactoe
 
         public bool ValidMove(Board board, int input)
         {
-            if (!(Taken(board, input) && Between(input)))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return !(Taken(board, input) && Between(input));
         }
 
         public string GetPosition(Board board, int input)
