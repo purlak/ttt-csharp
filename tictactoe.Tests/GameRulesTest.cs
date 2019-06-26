@@ -8,27 +8,25 @@ namespace tictactoe.Tests
 {
     public class GameRulesTest
     {
-        private ITestOutputHelper output;
-        private MockConsoleInterface console;
         private Board board;
         private GameRules rules;
 
-        public GameRulesTest (ITestOutputHelper output)
+        public GameRulesTest ()
         {
-            console = new MockConsoleInterface();
-            board = new Board(console);
+            board = new Board();
             rules = new GameRules();
-            this.output = output;
         }
 
         [Fact]
         public void DrawReturnsFalseForEmptyBoard()
         {
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            board.cells = new string[] {
+                " ", " ", " ",
+                " ", " ", " ",
+                " ", " ", " "};
 
             Assert.False(rules.Draw(board));
         }
-
 
         [Fact]
         public void DrawReturnsTrueWhenGameIsDraw()

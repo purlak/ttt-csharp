@@ -6,12 +6,18 @@ namespace tictactoe
     {
         private IUserInterface _console;
         private Board board;
-        private Player player;
+        private Player player1;
+        private Player player2;
+        private GameRules rules;
+        private Moves moves;
+        private Player currentPlayer;
 
         public Game(IUserInterface console)
         {
             _console = console;
-            board = new Board(console);
+            board = new Board();
+            rules = new GameRules();
+            moves = new Moves();
         }
 
         public Board GetBoard()
@@ -49,15 +55,54 @@ namespace tictactoe
             GetPlayers();
             do
             {
-                board.UpdateBoard(player.GetMove(), player);
-            } while (false);
+                Turn();
+                //board.UpdateBoard(currentPlayer.GetMove(), currentPlayer);
+            } while (rules.Over(board) != true);
 
             _console.DisplayBoard(board);
         }
 
-        private void GetPlayers()
+        public void Turn()
         {
-            player = new Player("X", _console);
+            GetCurrentPlayer();
+            _console.DisplayText($"It's now {currentPlayer._marker}'s turn.");
+            int input = currentPlayer.GetMove();
+            if (moves.ValidMove(board, input))
+            {
+                board.UpdateBoard(input, currentPlayer);
+                _console.DisplayBoard(board);
+            }
+            else if (moves.Between(input) == false)
+            {
+                _console.DisplayText("Invalid Move. Try again");
+                Turn();
+            }
+
+            else if (moves.Taken(board, input))
+            {
+                _console.DisplayText("Position take. Try again.");
+                GetCurrentPlayer();
+                Turn();
+            }
+        }
+
+        public void GetPlayers()
+        {
+            player1 = new Player("X", _console);
+            player2 = new Player("O", _console);
+        }
+
+        public Player GetCurrentPlayer()
+        {
+            if (moves.TurnCount(board.cells) % 2 == 0)
+            {
+                currentPlayer = player1;
+            }
+            else
+            {
+                currentPlayer = player2;
+            }
+            return currentPlayer;
         }
     }
 }

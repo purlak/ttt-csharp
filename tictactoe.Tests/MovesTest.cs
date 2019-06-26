@@ -6,13 +6,12 @@ namespace tictactoe.Tests
     public class MovesTest
     {
         private Moves moves;
-        private MockConsoleInterface console;
         private Board board;
 
         public MovesTest()
         {
             moves = new Moves();
-            board = new Board(console);
+            board = new Board();
         }
 
         [Fact]
@@ -72,6 +71,19 @@ namespace tictactoe.Tests
                 " ", "X", " "};
 
             Assert.False(moves.Taken(board, input));
+        }
+
+        [Fact]
+        public void ValidMoveReturnsTrueWhenInputBetweenOneAndNine()
+        {
+            int input = 1;
+
+            board.cells = new string[] {
+                " ", "O", " ",
+                "O", " ", " ",
+                " ", "X", " "};
+
+            Assert.True(moves.ValidMove(board, input));
         }
 
     }

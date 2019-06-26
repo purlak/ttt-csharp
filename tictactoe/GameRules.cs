@@ -18,7 +18,7 @@ namespace tictactoe
 
         public bool Over(Board board)
         {
-            return Won(board) || moves.Full(board.cells);
+            return Won(board) || Draw(board);
         }
 
         private bool Won(Board board)
