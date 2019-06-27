@@ -86,5 +86,26 @@ namespace tictactoe.Tests
             Assert.True(moves.ValidMove(board, input));
         }
 
+        [Fact]
+        public void TurnCountReturnsZeroWhenBoardIsEmpty()
+        {
+            board.cells = new string[] {
+                " ", " ", " ",
+                " ", " ", " ",
+                " ", " ", " "};
+
+            Assert.Equal(0, moves.TurnCount(board.cells));
+        }
+
+        [Fact]
+        public void TurnCountReturnsThreeWhenThreeMovesHaveBeenPlayed()
+        {
+            board.cells = new string[] {
+                " ", "X", " ",
+                "O", " ", " ",
+                " ", "X", " "};
+
+            Assert.Equal(3, moves.TurnCount(board.cells));
+        }
     }
 }

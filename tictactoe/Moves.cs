@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace tictactoe
 {
-    public class Moves
+    public class Moves 
     {
         public bool Full(string[] cells)
         {
