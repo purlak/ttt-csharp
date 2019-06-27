@@ -25,6 +25,17 @@ namespace tictactoe
             return board;
         }
 
+        public void SetBoard(Board _board)
+        {
+            board = _board;
+        }
+
+        public void SetPlayers(Player _player1, Player _player2)
+        {
+            player1 = _player1;
+            player2 = _player2;
+        }
+
         public void Menu()
         {
             _console.DisplayText("Welcome to TicTacToe!");

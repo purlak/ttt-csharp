@@ -11,13 +11,20 @@ namespace tictactoe.Tests
     {
         private MockConsoleInterface console;
         private Game game;
-        private ITestOutputHelper output;
+        private Moves moves;
+        private Board board;
+        private Player player1;
+        private Player player2;
 
-        public GameTest(ITestOutputHelper output)
+        public GameTest()
         {
+
             console = new MockConsoleInterface();
             game = new Game(console);
-            this.output = output;
+            board = new Board();
+            player1 = new Player("X", console);
+            player2 = new Player("O", console);
+            moves = new Moves();
         }
 
         [Fact]
@@ -43,8 +50,40 @@ namespace tictactoe.Tests
 
             game = new Game(console);
             game.Menu();
-            
+
             Assert.True(console.NumTimesDisplayBoardIsCalled > 9);
+        }
+
+        [Fact]
+        public void GetCurrentPlayerReturnsPlayer2Test()
+        {
+            board.cells = new string[] {
+                "X", " ", " ",
+                " ", " ", " ",
+                " ", " ", " "};
+
+            game.SetBoard(board);
+            game.SetPlayers(player1, player2);
+
+            Player currentPlayer = game.GetCurrentPlayer();
+
+            Assert.Equal("O", currentPlayer._marker);
+        }
+
+        [Fact]
+        public void GetCurrentPlayerReturnsPlayer1Test()
+        {
+            board.cells = new string[] {
+                "X", "O", " ",
+                " ", " ", " ",
+                " ", " ", " "};
+
+            game.SetBoard(board);
+            game.SetPlayers(player1, player2);
+
+            Player currentPlayer = game.GetCurrentPlayer();
+
+            Assert.Equal("X", currentPlayer._marker);
         }
     }
 }

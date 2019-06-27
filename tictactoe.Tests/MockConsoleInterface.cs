@@ -10,7 +10,7 @@ namespace tictactoe.Tests
         public int NumTimesGetInputIsCalled = 0;
         public int NumTimesDisplayBoardIsCalled = 0;
         public List<string> UserInputs = new List<string>() { "1" };
-
+       
         public void DisplayText(string text)
         {
             NumTimesDisplayTextIsCalled++;
@@ -22,7 +22,8 @@ namespace tictactoe.Tests
             if (UserInputs.Count == 0)
             {
                 return "1";
-            } else
+            }
+            else
             {
                 string input = UserInputs[0];
                 UserInputs.RemoveAt(0);
