@@ -15,6 +15,7 @@ namespace tictactoe.Tests
         private Board board;
         private Player player1;
         private Player player2;
+        private GameRules rules;
 
         public GameTest()
         {
@@ -25,6 +26,7 @@ namespace tictactoe.Tests
             player1 = new Player("X", console);
             player2 = new Player("O", console);
             moves = new Moves();
+            rules = new GameRules();
         }
 
         [Fact]
@@ -33,12 +35,11 @@ namespace tictactoe.Tests
 
             console = new MockConsoleInterface();
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
-
             game = new Game(console);
             game.Menu();
             Board board = game.GetBoard();
 
-            Assert.Equal(0, Array.FindAll(board.cells, element => element == " ").Length);
+            Assert.Equal(2, Array.FindAll(board.cells, element => element == " ").Length);
         }
 
         [Fact]
@@ -51,7 +52,7 @@ namespace tictactoe.Tests
             game = new Game(console);
             game.Menu();
 
-            Assert.True(console.NumTimesDisplayBoardIsCalled > 9);
+            Assert.True(console.NumTimesDisplayBoardIsCalled > 7);
         }
 
         [Fact]

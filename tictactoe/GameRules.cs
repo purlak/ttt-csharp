@@ -21,7 +21,7 @@ namespace tictactoe
             return Won(board) || Draw(board);
         }
 
-        private bool Won(Board board)
+        public bool Won(Board board)
         {
             if (
                     (board.cells[0] == board.cells[1] &&
@@ -47,8 +47,8 @@ namespace tictactoe
                     board.cells[1] != " "
                     )
                     ||
-                    (board.cells[2] == board.cells[5] &&
-                    board.cells[5] == board.cells[8] &&
+                    (board.cells[2] == board.cells[4] &&
+                    board.cells[4] == board.cells[6] &&
                     board.cells[2] != " "
                     )
                     ||
