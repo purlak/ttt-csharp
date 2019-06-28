@@ -18,6 +18,8 @@ namespace tictactoe
             board = new Board();
             rules = new GameRules();
             moves = new Moves();
+            player1 = new Player("X", console);
+            player2 = new Player("O", console);
         }
 
         public Board GetBoard()
@@ -63,33 +65,28 @@ namespace tictactoe
         public void Play()
         {
             _console.DisplayBoard(board);
-            GetPlayers();
             do
             {
                 GetCurrentPlayer();
-                board.UpdateBoard(currentPlayer.GetMove(), currentPlayer);
-                _console.DisplayBoard(board);
+                int position = currentPlayer.GetMove();
+                if (moves.ValidMove(board, position))
+                {
+                    board.UpdateBoard(position, currentPlayer);
+                    _console.DisplayBoard(board);
+                }
+
+                else 
+                {
+                    _console.DisplayText("This spot is invalid. Try again.");
+                }
             } while (rules.Over(board) != true);
 
             _console.DisplayBoard(board);
         }
 
-        public void GetPlayers()
-        {
-            player1 = new Player("X", _console);
-            player2 = new Player("O", _console);
-        }
-
         public Player GetCurrentPlayer()
         {
-            if (moves.TurnCount(board.cells) % 2 == 0)
-            {
-                currentPlayer = player1;
-            }
-            else
-            {
-                currentPlayer = player2;
-            }
+            currentPlayer = moves.TurnCount(board.cells) % 2 == 0 ? player1 : player2;
             return currentPlayer;
         }
     }

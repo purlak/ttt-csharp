@@ -3,7 +3,7 @@ using System.Linq;
 
 namespace tictactoe
 {
-    public class Moves 
+    public class Moves
     {
         public bool Full(string[] cells)
         {
@@ -21,7 +21,7 @@ namespace tictactoe
 
         public bool ValidMove(Board board, int input)
         {
-            return !(Taken(board, input) && Between(input));
+            return Between(input) && !Taken(board, input);
         }
 
         public string GetPosition(Board board, int input)
@@ -36,7 +36,7 @@ namespace tictactoe
 
         public bool Between(int input)
         {
-            return false ? 1 <= input && input <= 9 : 1 < input && input < 9;
+            return 1 <= input && input <= 9;
         }
     }
 }

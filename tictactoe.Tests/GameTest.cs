@@ -85,5 +85,35 @@ namespace tictactoe.Tests
 
             Assert.Equal("X", currentPlayer._marker);
         }
+
+        [Fact]
+        public void GamePlayChecksForValidMoveTest1()
+        {
+            board.cells = new string[] {
+                "X", "O", " ",
+                " ", " ", " ",
+                " ", " ", " "};
+
+            game.SetBoard(board);
+
+            int position = 2;
+
+            Assert.False(moves.ValidMove(board, position));
+        }
+
+        [Fact]
+        public void GamePlayChecksForValidMoveTest2()
+        {
+            board.cells = new string[] {
+                "X", "O", " ",
+                " ", " ", " ",
+                " ", " ", " "};
+
+            game.SetBoard(board);
+
+            int position = 3;
+
+            Assert.True(moves.ValidMove(board, position));
+        }
     }
 }
