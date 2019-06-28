@@ -11,7 +11,7 @@ namespace tictactoe.Tests
         public BoardTest()
         {
             console = new MockConsoleInterface();
-            board = new Board(console);
+            board = new Board();
             currentPlayer = new Player("X", console);
         }
 

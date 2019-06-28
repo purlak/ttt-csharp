@@ -6,12 +6,34 @@ namespace tictactoe
     {
         private IUserInterface _console;
         private Board board;
-        private Player player;
+        private Player player1;
+        private Player player2;
+        private GameRules rules;
+        private Moves moves;
+        private Player currentPlayer;
 
         public Game(IUserInterface console)
         {
             _console = console;
-            board = new Board(console);
+            board = new Board();
+            rules = new GameRules();
+            moves = new Moves();
+        }
+
+        public Board GetBoard()
+        {
+            return board;
+        }
+
+        public void SetBoard(Board _board)
+        {
+            board = _board;
+        }
+
+        public void SetPlayers(Player _player1, Player _player2)
+        {
+            player1 = _player1;
+            player2 = _player2;
         }
 
         public void Menu()
@@ -42,13 +64,33 @@ namespace tictactoe
         {
             _console.DisplayBoard(board);
             GetPlayers();
-            board.UpdateBoard(player.GetMove(), player);
+            do
+            {
+                GetCurrentPlayer();
+                board.UpdateBoard(currentPlayer.GetMove(), currentPlayer);
+                _console.DisplayBoard(board);
+            } while (rules.Over(board) != true);
+
             _console.DisplayBoard(board);
         }
 
-        private void GetPlayers()
+        public void GetPlayers()
         {
-            player = new Player("X", _console);
+            player1 = new Player("X", _console);
+            player2 = new Player("O", _console);
+        }
+
+        public Player GetCurrentPlayer()
+        {
+            if (moves.TurnCount(board.cells) % 2 == 0)
+            {
+                currentPlayer = player1;
+            }
+            else
+            {
+                currentPlayer = player2;
+            }
+            return currentPlayer;
         }
     }
 }
