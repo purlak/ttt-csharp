@@ -56,7 +56,7 @@ namespace tictactoe.Tests
         }
 
         [Fact]
-        public void GetCurrentPlayerReturnsPlayer2Test()
+        public void GetCurrentPlayerReturnsPlayer2Test()    
         {
             board.cells = new string[] {
                 "X", " ", " ",
@@ -95,11 +95,16 @@ namespace tictactoe.Tests
                 " ", " ", " ",
                 " ", " ", " "};
 
+            console.setUserInputs(new List<string> { "1", "1", "2", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game = new Game(console);
+
             game.SetBoard(board);
+            game.SetPlayers(player1, player2);
 
-            int position = 2;
-
-            Assert.False(moves.ValidMove(board, position));
+            game.Menu();
+            
+            Assert.Equal("O", board.cells[1]);
         }
 
         [Fact]
@@ -115,6 +120,21 @@ namespace tictactoe.Tests
             int position = 3;
 
             Assert.True(moves.ValidMove(board, position));
+        }
+
+        [Fact]
+        public void GamePlayChecksForDraw()
+        {
+            board.cells = new string[] {
+                "X", "O", "X",
+                "X", "O", "O",
+                "O", "X", "X"};
+
+            game.SetBoard(board);
+
+            game.Play();
+
+            Assert.True(rules.Draw(board));
         }
     }
 }

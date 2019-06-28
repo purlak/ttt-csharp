@@ -74,14 +74,22 @@ namespace tictactoe
                     board.UpdateBoard(position, currentPlayer);
                     _console.DisplayBoard(board);
                 }
-
-                else 
-                {
-                    _console.DisplayText("This spot is invalid. Try again.");
-                }
+                //else
+                //{
+                //    _console.DisplayText("This position is invalid. Try again.");
+                //}
             } while (rules.Over(board) != true);
 
             _console.DisplayBoard(board);
+
+            //if (rules.Won(board))
+            //{
+            //    _console.DisplayText($"Game Over. {currentPlayer._marker} is the winner.");
+            //}
+            //else
+            //{
+            //    _console.DisplayText("Game is Draw!");
+            //}
         }
 
         public Player GetCurrentPlayer()
