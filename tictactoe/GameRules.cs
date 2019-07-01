@@ -2,7 +2,7 @@
 
 namespace tictactoe
 {
-    public class GameRules
+    public class GameRules : IGameRulesInterface
     {
         private Moves moves;
 
@@ -10,7 +10,7 @@ namespace tictactoe
         {
             moves = new Moves();
         }
-
+        
         public bool Draw(Board board)
         {
             return moves.Full(board.cells);

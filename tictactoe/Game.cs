@@ -5,18 +5,18 @@ namespace tictactoe
     public class Game
     {
         private IUserInterface _console;
+        private IGameRulesInterface _rules;
         private Board board;
         private Player player1;
         private Player player2;
-        private GameRules rules;
         private Moves moves;
         private Player currentPlayer;
 
-        public Game(IUserInterface console)
+        public Game(IUserInterface console, IGameRulesInterface rules)
         {
             _console = console;
+            _rules = rules;
             board = new Board();
-            rules = new GameRules();
             moves = new Moves();
             player1 = new Player("X", console);
             player2 = new Player("O", console);
@@ -74,22 +74,23 @@ namespace tictactoe
                     board.UpdateBoard(position, currentPlayer);
                     _console.DisplayBoard(board);
                 }
-                //else
-                //{
-                //    _console.DisplayText("This position is invalid. Try again.");
-                //}
-            } while (rules.Over(board) != true);
+                else
+                {
+                    _console.DisplayText("This position is invalid. Try again.");
+                }
+            } while (_rules.Over(board) != true);
 
             _console.DisplayBoard(board);
 
-            //if (rules.Won(board))
-            //{
-            //    _console.DisplayText($"Game Over. {currentPlayer._marker} is the winner.");
-            //}
-            //else
-            //{
-            //    _console.DisplayText("Game is Draw!");
-            //}
+            if (_rules.Won(board))
+            {
+                _console.DisplayText($"Game Over. {currentPlayer._marker} is the winner.");
+            }
+
+            if (_rules.Draw(board))
+            {
+                _console.DisplayText("Game is Draw!");
+            }
         }
 
         public Player GetCurrentPlayer()

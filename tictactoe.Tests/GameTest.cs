@@ -10,23 +10,22 @@ namespace tictactoe.Tests
     public class GameTest
     {
         private MockConsoleInterface console;
+        private MockGameRulesInterface rules;
         private Game game;
-        private Moves moves;
         private Board board;
         private Player player1;
         private Player player2;
-        private GameRules rules;
 
         public GameTest()
         {
 
             console = new MockConsoleInterface();
-            game = new Game(console);
+            rules = new MockGameRulesInterface();
+            game = new Game(console, rules);
             board = new Board();
             player1 = new Player("X", console);
             player2 = new Player("O", console);
             moves = new Moves();
-            rules = new GameRules();
         }
 
         [Fact]
@@ -35,7 +34,7 @@ namespace tictactoe.Tests
 
             console = new MockConsoleInterface();
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
-            game = new Game(console);
+            game = new Game(console, rules);
             game.Menu();
             Board board = game.GetBoard();
 
@@ -49,14 +48,14 @@ namespace tictactoe.Tests
             console = new MockConsoleInterface();
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
-            game = new Game(console);
+            game = new Game(console, rules);
             game.Menu();
 
             Assert.True(console.NumTimesDisplayBoardIsCalled > 7);
         }
 
         [Fact]
-        public void GetCurrentPlayerReturnsPlayer2Test()    
+        public void GetCurrentPlayerReturnsPlayer2Test()
         {
             board.cells = new string[] {
                 "X", " ", " ",
@@ -97,13 +96,13 @@ namespace tictactoe.Tests
 
             console.setUserInputs(new List<string> { "1", "1", "2", "2", "3", "4", "5", "6", "7", "8", "9" });
 
-            game = new Game(console);
+            game = new Game(console, rules);
 
             game.SetBoard(board);
             game.SetPlayers(player1, player2);
 
             game.Menu();
-            
+
             Assert.Equal("O", board.cells[1]);
         }
 
@@ -111,15 +110,20 @@ namespace tictactoe.Tests
         public void GamePlayChecksForValidMoveTest2()
         {
             board.cells = new string[] {
-                "X", "O", " ",
+                "X", "O", "X",
                 " ", " ", " ",
                 " ", " ", " "};
 
+            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game = new Game(console, rules);
+
             game.SetBoard(board);
+            game.SetPlayers(player1, player2);
 
-            int position = 3;
+            game.Menu();
 
-            Assert.True(moves.ValidMove(board, position));
+            Assert.Equal("O", board.cells[3]);
         }
 
         [Fact]
@@ -130,11 +134,32 @@ namespace tictactoe.Tests
                 "X", "O", "O",
                 "O", "X", "X"};
 
+            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
             game.SetBoard(board);
+            game.SetPlayers(player1, player2);
 
-            game.Play();
+            game.Menu();
 
-            Assert.True(rules.Draw(board));
+            Assert.True(rules.DrawIsCalled == true);
+        }
+
+        [Fact]
+        public void GamePlayChecksForWon()
+        {
+            board.cells = new string[] {
+                "X", "O", "X",
+                "O", "X", "O",
+                "X", "O", "X"};
+
+            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.SetBoard(board);
+            game.SetPlayers(player1, player2);
+
+            game.Menu();
+
+            Assert.True(rules.WonIsCalled == true);
         }
     }
 }
