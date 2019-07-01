@@ -6,7 +6,7 @@ namespace tictactoe.Tests
         public bool DrawIsCalled;
         public bool WonIsCalled;
         public bool GameIsOver;
-       
+
         public bool Draw(Board board) => DrawIsCalled = true;
 
         public bool Over(Board board)

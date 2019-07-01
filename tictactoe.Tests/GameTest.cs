@@ -18,14 +18,12 @@ namespace tictactoe.Tests
 
         public GameTest()
         {
-
             console = new MockConsoleInterface();
             rules = new MockGameRulesInterface();
             game = new Game(console, rules);
             board = new Board();
             player1 = new Player("X", console);
             player2 = new Player("O", console);
-            moves = new Moves();
         }
 
         [Fact]
@@ -160,6 +158,42 @@ namespace tictactoe.Tests
             game.Menu();
 
             Assert.True(rules.WonIsCalled == true);
+        }
+
+        [Fact]
+        public void GamePlayDisplaysDraw()
+        {
+            board.cells = new string[] {
+                "X", "O", "X",
+                "X", "O", "O",
+                "O", "X", "X"};
+
+            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.SetBoard(board);
+            game.SetPlayers(player1, player2);
+
+            game.Menu();
+
+            Assert.Contains("Game is Draw!", console.CaptureOutput);
+        }
+
+        [Fact]
+        public void GamePlayDisplaysWin()
+        {
+            board.cells = new string[] {
+                "X", "O", "X",
+                "O", "X", "O",
+                "X", "O", "X"};
+
+            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.SetBoard(board);
+            game.SetPlayers(player1, player2);
+
+            game.Menu();
+
+            Assert.Contains("O is the winner", console.CaptureOutput);
         }
     }
 }

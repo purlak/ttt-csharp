@@ -9,11 +9,13 @@ namespace tictactoe.Tests
         public int NumTimesDisplayTextIsCalled = 0;
         public int NumTimesGetInputIsCalled = 0;
         public int NumTimesDisplayBoardIsCalled = 0;
+        public string CaptureOutput = " ";
         public List<string> UserInputs = new List<string>() { "1" };
-       
+
         public void DisplayText(string text)
         {
             NumTimesDisplayTextIsCalled++;
+            CaptureOutput += text;
         }
 
         public string GetInput()

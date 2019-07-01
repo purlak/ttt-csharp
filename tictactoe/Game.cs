@@ -86,7 +86,6 @@ namespace tictactoe
             {
                 _console.DisplayText($"Game Over. {currentPlayer._marker} is the winner.");
             }
-
             if (_rules.Draw(board))
             {
                 _console.DisplayText("Game is Draw!");

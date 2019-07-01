@@ -10,7 +10,7 @@ namespace tictactoe
         {
             moves = new Moves();
         }
-        
+
         public bool Draw(Board board)
         {
             return moves.Full(board.cells);
@@ -45,6 +45,11 @@ namespace tictactoe
                     (board.cells[1] == board.cells[4] &&
                     board.cells[4] == board.cells[7] &&
                     board.cells[1] != " "
+                    )
+                    ||
+                    (board.cells[2] == board.cells[5] &&
+                    board.cells[5] == board.cells[8] &&
+                    board.cells[2] != " "
                     )
                     ||
                     (board.cells[2] == board.cells[4] &&
