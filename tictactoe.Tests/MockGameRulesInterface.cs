@@ -1,5 +1,4 @@
-﻿using System;
-namespace tictactoe.Tests
+﻿namespace tictactoe.Tests
 {
     public class MockGameRulesInterface : IGameRulesInterface
     {

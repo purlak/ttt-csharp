@@ -1,8 +1,5 @@
 ﻿using System;
-using System.IO;
 using Xunit;
-using tictactoe;
-using Xunit.Abstractions;
 using System.Collections.Generic;
 
 namespace tictactoe.Tests
@@ -20,33 +17,29 @@ namespace tictactoe.Tests
         {
             console = new MockConsoleInterface();
             rules = new MockGameRulesInterface();
-            game = new Game(console, rules);
             board = new Board();
             player1 = new Player("X", console);
             player2 = new Player("O", console);
+            game = new Game(console, rules, player1, player2);
         }
 
         [Fact]
         public void GamePlaysThroughTheWholeGameTest()
         {
 
-            console = new MockConsoleInterface();
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
-            game = new Game(console, rules);
-            game.Menu();
-            Board board = game.GetBoard();
 
-            Assert.Equal(2, Array.FindAll(board.cells, element => element == " ").Length);
+            game.Menu();
+            Board game_board = game.GetBoard();
+
+            Assert.Equal(2, Array.FindAll(game_board.cells, element => element == " ").Length);
         }
 
         [Fact]
         public void GameCallsConsoleDisplayBoardTest()
         {
-
-            console = new MockConsoleInterface();
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
-            game = new Game(console, rules);
             game.Menu();
 
             Assert.True(console.NumTimesDisplayBoardIsCalled > 7);
@@ -56,12 +49,10 @@ namespace tictactoe.Tests
         public void GetCurrentPlayerReturnsPlayer2Test()
         {
             board.cells = new string[] {
-                "X", " ", " ",
-                " ", " ", " ",
-                " ", " ", " "};
-
+                    "X", " ", " ",
+                    " ", " ", " ",
+                    " ", " ", " "};
             game.SetBoard(board);
-            game.SetPlayers(player1, player2);
 
             Player currentPlayer = game.GetCurrentPlayer();
 
@@ -72,12 +63,11 @@ namespace tictactoe.Tests
         public void GetCurrentPlayerReturnsPlayer1Test()
         {
             board.cells = new string[] {
-                "X", "O", " ",
-                " ", " ", " ",
-                " ", " ", " "};
+                    "X", "O", " ",
+                    " ", " ", " ",
+                    " ", " ", " "};
 
             game.SetBoard(board);
-            game.SetPlayers(player1, player2);
 
             Player currentPlayer = game.GetCurrentPlayer();
 
@@ -88,14 +78,12 @@ namespace tictactoe.Tests
         public void GamePlayChecksForValidMoveAndDoesNotReplaceTakenCell()
         {
             board.cells = new string[] {
-                "X", "O", " ",
-                " ", " ", " ",
-                " ", " ", " "};
+                    "X", "O", " ",
+                    " ", " ", " ",
+                    " ", " ", " "};
             console.setUserInputs(new List<string> { "1", "1", "2", "2", "3", "4", "5", "6", "7", "8", "9" });
-            game = new Game(console, rules);
-            game.SetBoard(board);
-            game.SetPlayers(player1, player2);
 
+            game.SetBoard(board);
             game.Menu();
 
             Assert.Equal("O", board.cells[1]);
@@ -105,14 +93,12 @@ namespace tictactoe.Tests
         public void GamePlayChecksForValidMoveAndAllowsPlayerToPlaceAMarkOnAnEmptyCell()
         {
             board.cells = new string[] {
-                "X", "O", "X",
-                " ", " ", " ",
-                " ", " ", " "};
+                    "X", "O", "X",
+                    " ", " ", " ",
+                    " ", " ", " "};
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
-            game = new Game(console, rules);
-            game.SetBoard(board);
-            game.SetPlayers(player1, player2);
 
+            game.SetBoard(board);
             game.Menu();
 
             Assert.Equal("O", board.cells[3]);
@@ -122,13 +108,12 @@ namespace tictactoe.Tests
         public void GamePlayChecksForDraw()
         {
             board.cells = new string[] {
-                "X", "O", "X",
-                "X", "O", "O",
-                "O", "X", "X"};
+                    "X", "O", "X",
+                    "X", "O", "O",
+                    "O", "X", "X"};
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
-            game.SetBoard(board);
-            game.SetPlayers(player1, player2);
 
+            game.SetBoard(board);
             game.Menu();
 
             Assert.True(rules.DrawIsCalled);
@@ -138,13 +123,12 @@ namespace tictactoe.Tests
         public void GamePlayChecksForWon()
         {
             board.cells = new string[] {
-                "X", "O", "X",
-                "O", "X", "O",
-                "X", "O", "X"};
+                    "X", "O", "X",
+                    "O", "X", "O",
+                    "X", "O", "X"};
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
-            game.SetBoard(board);
-            game.SetPlayers(player1, player2);
 
+            game.SetBoard(board);
             game.Menu();
 
             Assert.True(rules.WonIsCalled);
@@ -154,15 +138,12 @@ namespace tictactoe.Tests
         public void GamePlayDisplaysDraw()
         {
             board.cells = new string[] {
-                "X", "O", "X",
-                "X", "O", "O",
-                "O", "X", "X"};
-
+                    "X", "O", "X",
+                    "X", "O", "O",
+                    "O", "X", "X"};
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.SetBoard(board);
-            game.SetPlayers(player1, player2);
-
             game.Menu();
 
             Assert.Contains("Game is Draw!", console.CaptureOutput);
@@ -172,15 +153,12 @@ namespace tictactoe.Tests
         public void GamePlayDisplaysWin()
         {
             board.cells = new string[] {
-                "X", "O", "X",
-                "O", "X", "O",
-                "X", "O", "X"};
-
+                    "X", "O", "X",
+                    "O", "X", "O",
+                    "X", "O", "X"};
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.SetBoard(board);
-            game.SetPlayers(player1, player2);
-
             game.Menu();
 
             Assert.Contains("O is the winner", console.CaptureOutput);

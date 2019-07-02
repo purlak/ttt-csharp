@@ -7,19 +7,19 @@ namespace tictactoe
         private IUserInterface _console;
         private IGameRulesInterface _rules;
         private Board board;
-        private Player player1;
-        private Player player2;
+        private Player _player1;
+        private Player _player2;
         private Moves moves;
         private Player currentPlayer;
 
-        public Game(IUserInterface console, IGameRulesInterface rules)
+        public Game(IUserInterface console, IGameRulesInterface rules, Player player1, Player player2)
         {
             _console = console;
             _rules = rules;
+            _player1 = player1;
+            _player2 = player2;
             board = new Board();
             moves = new Moves();
-            player1 = new Player("X", console);
-            player2 = new Player("O", console);
         }
 
         public Board GetBoard()
@@ -30,12 +30,6 @@ namespace tictactoe
         public void SetBoard(Board _board)
         {
             board = _board;
-        }
-
-        public void SetPlayers(Player _player1, Player _player2)
-        {
-            player1 = _player1;
-            player2 = _player2;
         }
 
         public void Menu()
@@ -94,7 +88,7 @@ namespace tictactoe
 
         public Player GetCurrentPlayer()
         {
-            currentPlayer = moves.TurnCount(board.cells) % 2 == 0 ? player1 : player2;
+            currentPlayer = moves.TurnCount(board.cells) % 2 == 0 ? _player1 : _player2;
             return currentPlayer;
         }
     }

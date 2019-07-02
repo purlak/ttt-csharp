@@ -1,8 +1,4 @@
-﻿using System;
-using Xunit;
-using tictactoe;
-using System.Collections.Generic;
-using Xunit.Abstractions;
+﻿using Xunit;
 
 namespace tictactoe.Tests
 {
