@@ -7,7 +7,8 @@ namespace tictactoe
         static void Main()
         {
             ConsoleInterface console = new ConsoleInterface();
-            Game game = new Game(console);
+            GameRules rules = new GameRules();
+            Game game = new Game(console, rules);
             game.Menu();
         }
     }

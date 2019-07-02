@@ -5,19 +5,21 @@ namespace tictactoe
     public class Game
     {
         private IUserInterface _console;
+        private IGameRulesInterface _rules;
         private Board board;
         private Player player1;
         private Player player2;
-        private GameRules rules;
         private Moves moves;
         private Player currentPlayer;
 
-        public Game(IUserInterface console)
+        public Game(IUserInterface console, IGameRulesInterface rules)
         {
             _console = console;
+            _rules = rules;
             board = new Board();
-            rules = new GameRules();
             moves = new Moves();
+            player1 = new Player("X", console);
+            player2 = new Player("O", console);
         }
 
         public Board GetBoard()
@@ -63,33 +65,36 @@ namespace tictactoe
         public void Play()
         {
             _console.DisplayBoard(board);
-            GetPlayers();
             do
             {
                 GetCurrentPlayer();
-                board.UpdateBoard(currentPlayer.GetMove(), currentPlayer);
-                _console.DisplayBoard(board);
-            } while (rules.Over(board) != true);
+                int position = currentPlayer.GetMove();
+                if (moves.ValidMove(board, position))
+                {
+                    board.UpdateBoard(position, currentPlayer);
+                    _console.DisplayBoard(board);
+                }
+                else
+                {
+                    _console.DisplayText("This position is invalid. Try again.");
+                }
+            } while (_rules.Over(board) != true);
 
             _console.DisplayBoard(board);
-        }
 
-        public void GetPlayers()
-        {
-            player1 = new Player("X", _console);
-            player2 = new Player("O", _console);
+            if (_rules.Won(board))
+            {
+                _console.DisplayText($"Game Over. {currentPlayer._marker} is the winner.");
+            }
+            if (_rules.Draw(board))
+            {
+                _console.DisplayText("Game is Draw!");
+            }
         }
 
         public Player GetCurrentPlayer()
         {
-            if (moves.TurnCount(board.cells) % 2 == 0)
-            {
-                currentPlayer = player1;
-            }
-            else
-            {
-                currentPlayer = player2;
-            }
+            currentPlayer = moves.TurnCount(board.cells) % 2 == 0 ? player1 : player2;
             return currentPlayer;
         }
     }
