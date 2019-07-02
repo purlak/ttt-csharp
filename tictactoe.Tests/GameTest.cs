@@ -85,17 +85,14 @@ namespace tictactoe.Tests
         }
 
         [Fact]
-        public void GamePlayChecksForValidMoveTest1()
+        public void GamePlayChecksForValidMoveAndDoesNotReplaceTakenCell()
         {
             board.cells = new string[] {
                 "X", "O", " ",
                 " ", " ", " ",
                 " ", " ", " "};
-
             console.setUserInputs(new List<string> { "1", "1", "2", "2", "3", "4", "5", "6", "7", "8", "9" });
-
             game = new Game(console, rules);
-
             game.SetBoard(board);
             game.SetPlayers(player1, player2);
 
@@ -105,17 +102,14 @@ namespace tictactoe.Tests
         }
 
         [Fact]
-        public void GamePlayChecksForValidMoveTest2()
+        public void GamePlayChecksForValidMoveAndAllowsPlayerToPlaceAMarkOnAnEmptyCell()
         {
             board.cells = new string[] {
                 "X", "O", "X",
                 " ", " ", " ",
                 " ", " ", " "};
-
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
-
             game = new Game(console, rules);
-
             game.SetBoard(board);
             game.SetPlayers(player1, player2);
 
