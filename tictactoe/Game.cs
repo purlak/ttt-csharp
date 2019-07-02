@@ -6,7 +6,7 @@ namespace tictactoe
     {
         private IUserInterface _console;
         private IGameRulesInterface _rules;
-        private Board board;
+        private Board _board;
         private Player _player1;
         private Player _player2;
         private Moves moves;
@@ -18,18 +18,28 @@ namespace tictactoe
             _rules = rules;
             _player1 = player1;
             _player2 = player2;
-            board = new Board();
+            _board = new Board();
             moves = new Moves();
         }
 
         public Board GetBoard()
         {
-            return board;
+            return _board;
         }
 
-        public void SetBoard(Board _board)
+        public void SetBoard(Board board)
         {
-            board = _board;
+            _board = board;
+        }
+
+        public Player GetPlayer1()
+        {
+            return _player1;
+        }
+
+        public Player GetPlayer2()
+        {
+            return _player2;
         }
 
         public void Menu()
@@ -47,6 +57,7 @@ namespace tictactoe
             switch (input)
             {
                 case "1":
+                    SelectMarker();
                     Play();
                     break;
                 default:
@@ -56,31 +67,50 @@ namespace tictactoe
             }
         }
 
+        public void SelectMarker()
+        {
+            _console.DisplayText("Select Marker - 1 to choose 'X' or 2 to choose 'O': ");
+            string input = _console.GetInput();
+            switch (input)
+            {
+                case "1":
+                    break;
+                case "2":
+                    _player1._marker = "O";
+                    _player2._marker = "X";
+                    break;
+                default:
+                    _console.DisplayText("Invalid Option. Try again.");
+                    SelectMarker();
+                    break;
+            }
+        }
+
         public void Play()
         {
-            _console.DisplayBoard(board);
+            _console.DisplayBoard(_board);
             do
             {
                 GetCurrentPlayer();
                 int position = currentPlayer.GetMove();
-                if (moves.ValidMove(board, position))
+                if (moves.ValidMove(_board, position))
                 {
-                    board.UpdateBoard(position, currentPlayer);
-                    _console.DisplayBoard(board);
+                    _board.UpdateBoard(position, currentPlayer);
+                    _console.DisplayBoard(_board);
                 }
                 else
                 {
                     _console.DisplayText("This position is invalid. Try again.");
                 }
-            } while (_rules.Over(board) != true);
+            } while (_rules.Over(_board) != true);
 
-            _console.DisplayBoard(board);
+            _console.DisplayBoard(_board);
 
-            if (_rules.Won(board))
+            if (_rules.Won(_board))
             {
                 _console.DisplayText($"Game Over. {currentPlayer._marker} is the winner.");
             }
-            if (_rules.Draw(board))
+            if (_rules.Draw(_board))
             {
                 _console.DisplayText("Game is Draw!");
             }
@@ -88,7 +118,7 @@ namespace tictactoe
 
         public Player GetCurrentPlayer()
         {
-            currentPlayer = moves.TurnCount(board.cells) % 2 == 0 ? _player1 : _player2;
+            currentPlayer = moves.TurnCount(_board.cells) % 2 == 0 ? _player1 : _player2;
             return currentPlayer;
         }
     }

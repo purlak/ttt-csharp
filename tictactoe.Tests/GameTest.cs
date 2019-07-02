@@ -27,7 +27,7 @@ namespace tictactoe.Tests
         public void GamePlaysThroughTheWholeGameTest()
         {
 
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.Menu();
             Board game_board = game.GetBoard();
@@ -43,6 +43,38 @@ namespace tictactoe.Tests
             game.Menu();
 
             Assert.True(console.NumTimesDisplayBoardIsCalled > 7);
+        }
+
+        [Fact]
+        public void GameGetsInputFromPlayerToSelectMarker()
+        {
+            console.setUserInputs(new List<string> { "1", "2", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.Menu();
+
+            Assert.True(console.NumTimesGetInputIsCalled > 8);
+        }
+
+        [Fact]
+        public void GameAllowsPlayer1ToHaveMarkerXAndPlayer2ToHaveMarkerO()
+        {
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.Menu();
+
+            Assert.Equal("X", game.GetPlayer1()._marker);
+            Assert.Equal("O", game.GetPlayer2()._marker);
+        }
+
+        [Fact]
+        public void GameAllowsPlayer1ToHaveMarkerOAndPlayer2ToHaveMarkerX()
+        {
+            console.setUserInputs(new List<string> { "1", "2", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.Menu();
+
+            Assert.Equal("O", game.GetPlayer1()._marker);
+            Assert.Equal("X", game.GetPlayer2()._marker);
         }
 
         [Fact]
