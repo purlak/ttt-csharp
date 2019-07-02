@@ -30,9 +30,9 @@ namespace tictactoe.Tests
             console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.Menu();
-            Board game_board = game.GetBoard();
+            Board gameBoard = game.GetBoard();
 
-            Assert.Equal(2, Array.FindAll(game_board.cells, element => element == " ").Length);
+            Assert.Equal(2, Array.FindAll(gameBoard.cells, element => element == " ").Length);
         }
 
         [Fact]
