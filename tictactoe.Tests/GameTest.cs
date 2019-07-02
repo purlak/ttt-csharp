@@ -125,15 +125,13 @@ namespace tictactoe.Tests
                 "X", "O", "X",
                 "X", "O", "O",
                 "O", "X", "X"};
-
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
-
             game.SetBoard(board);
             game.SetPlayers(player1, player2);
 
             game.Menu();
 
-            Assert.True(rules.DrawIsCalled == true);
+            Assert.True(rules.DrawIsCalled);
         }
 
         [Fact]
@@ -143,15 +141,13 @@ namespace tictactoe.Tests
                 "X", "O", "X",
                 "O", "X", "O",
                 "X", "O", "X"};
-
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
-
             game.SetBoard(board);
             game.SetPlayers(player1, player2);
 
             game.Menu();
 
-            Assert.True(rules.WonIsCalled == true);
+            Assert.True(rules.WonIsCalled);
         }
 
         [Fact]
