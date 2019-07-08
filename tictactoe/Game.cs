@@ -47,6 +47,7 @@ namespace tictactoe
             _console.DisplayText("Welcome to TicTacToe!");
             _console.DisplayText("Game Options:");
             _console.DisplayText("1. Human v. Human");
+            _console.DisplayText("2. Human v. Ai");
             UserInput();
         }
 

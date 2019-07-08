@@ -24,6 +24,26 @@ namespace tictactoe.Tests
         }
 
         [Fact]
+        public void GameMenuDisplaysHumanvHumanOption()
+        {
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.Menu();
+
+            Assert.Contains("1. Human v. Human", console.CaptureOutput);
+        }
+
+        [Fact]
+        public void GameMenuDisplaysHumanvAiOption()
+        {
+            console.setUserInputs(new List<string> { "1", "2", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.Menu();
+
+            Assert.Contains("2. Human v. Ai", console.CaptureOutput);
+        }
+
+        [Fact]
         public void GamePlaysThroughTheWholeGameTest()
         {
 
