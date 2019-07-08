@@ -6,6 +6,7 @@ namespace tictactoe.Tests
     {
         private MockConsoleInterface console;
         private Player player;
+        private Board board;
 
         public PlayerTest()
         {
@@ -16,7 +17,7 @@ namespace tictactoe.Tests
         [Fact]
         public void GetMoveReturnsPosition()
         {
-            Assert.Equal(1, player.GetMove());
+            Assert.Equal(1, player.GetMove(board));
         }
     }
 }

@@ -61,6 +61,11 @@ namespace tictactoe
                     SelectMarker();
                     Play();
                     break;
+                case "2":
+                    _player2 = new AiPlayer("O", _console);
+                    SelectMarker();
+                    Play();
+                    break;
                 default:
                     _console.DisplayText("Invalid Option. Try again.");
                     UserInput();
@@ -93,7 +98,7 @@ namespace tictactoe
             do
             {
                 GetCurrentPlayer();
-                int position = currentPlayer.GetMove();
+                int position = currentPlayer.GetMove(_board);
                 if (moves.ValidMove(_board, position))
                 {
                     _board.UpdateBoard(position, currentPlayer);
