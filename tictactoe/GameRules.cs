@@ -13,7 +13,7 @@ namespace tictactoe
 
         public bool Draw(Board board)
         {
-            return moves.Full(board.cells);
+            return moves.Full(board.cells) && !Won(board);
         }
 
         public bool Over(Board board)

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace tictactoe
+﻿namespace tictactoe
 {
     public class Game
     {
@@ -116,6 +114,7 @@ namespace tictactoe
             {
                 _console.DisplayText($"Game Over. {currentPlayer._marker} is the winner.");
             }
+
             if (_rules.Draw(_board))
             {
                 _console.DisplayText("Game is Draw!");

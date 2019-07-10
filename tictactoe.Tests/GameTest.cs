@@ -1,6 +1,7 @@
 ﻿using System;
 using Xunit;
 using System.Collections.Generic;
+using Xunit.Abstractions;
 
 namespace tictactoe.Tests
 {
@@ -163,7 +164,7 @@ namespace tictactoe.Tests
                     "X", "O", "X",
                     "X", "O", "O",
                     "O", "X", "X"};
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.SetBoard(board);
             game.Menu();
@@ -174,13 +175,8 @@ namespace tictactoe.Tests
         [Fact]
         public void GamePlayChecksForWon()
         {
-            board.cells = new string[] {
-                    "X", "O", "X",
-                    "O", "X", "O",
-                    "X", "O", "X"};
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
-            game.SetBoard(board);
             game.Menu();
 
             Assert.True(rules.WonIsCalled);
@@ -189,14 +185,11 @@ namespace tictactoe.Tests
         [Fact]
         public void GamePlayDisplaysDraw()
         {
-            board.cells = new string[] {
-                    "X", "O", "X",
-                    "X", "O", "O",
-                    "O", "X", "X"};
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "5", "6", "9", "8", "7", "4" });
 
-            game.SetBoard(board);
             game.Menu();
+
+            board = game.GetBoard();
 
             Assert.Contains("Game is Draw!", console.CaptureOutput);
         }
@@ -204,13 +197,8 @@ namespace tictactoe.Tests
         [Fact]
         public void GamePlayDisplaysWin()
         {
-            board.cells = new string[] {
-                    "X", "O", "X",
-                    "O", "X", "O",
-                    "X", "O", "X"};
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
-            game.SetBoard(board);
             game.Menu();
 
             Assert.Contains("O is the winner", console.CaptureOutput);

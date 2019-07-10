@@ -1,8 +1,9 @@
-﻿using Xunit;
+﻿using System.Collections.Generic;
+using Xunit;
 
 namespace tictactoe.Tests
 {
-    public class AiPlayerTest 
+    public class AiPlayerTest
     {
         private Board board;
         private MockConsoleInterface console;
@@ -16,14 +17,11 @@ namespace tictactoe.Tests
         }
 
         [Fact]
-        public void AiPlayerReturns5IfCentreIsNotOccupied()
+        public void AiPlayerReturnsRandomNumberBetween1And9()
         {
-            board.cells = new string[] {
-                    "X", " ", " ",
-                    " ", " ", " ",
-                    " ", " ", " "};
-            
-            Assert.Equal(5, aiPlayer.GetMove(board));
+            List<int> randomNumberList = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+            int aiInput = aiPlayer.GetMove(board);
+            Assert.Contains(aiInput, randomNumberList);
         }
     }
 }
