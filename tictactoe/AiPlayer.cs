@@ -20,7 +20,9 @@ namespace tictactoe
             do
             {
                 aiInput = cells.Next(1, 9);
-            } while (!moves.ValidMove(board, aiInput));
+            }
+            while (!moves.ValidMove(board, aiInput));
+
             return aiInput;
         }
     }
