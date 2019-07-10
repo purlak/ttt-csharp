@@ -160,13 +160,8 @@ namespace tictactoe.Tests
         [Fact]
         public void GamePlayChecksForDraw()
         {
-            board.cells = new string[] {
-                    "X", "O", "X",
-                    "X", "O", "O",
-                    "O", "X", "X"};
             console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
-            game.SetBoard(board);
             game.Menu();
 
             Assert.True(rules.DrawIsCalled);
