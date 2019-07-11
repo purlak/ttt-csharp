@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace tictactoe
+﻿namespace tictactoe
 {
     public class Game
     {
@@ -47,6 +45,7 @@ namespace tictactoe
             _console.DisplayText("Welcome to TicTacToe!");
             _console.DisplayText("Game Options:");
             _console.DisplayText("1. Human v. Human");
+            _console.DisplayText("2. Human v. Ai");
             UserInput();
         }
 
@@ -57,6 +56,11 @@ namespace tictactoe
             switch (input)
             {
                 case "1":
+                    SelectMarker();
+                    Play();
+                    break;
+                case "2":
+                    _player2 = new AiPlayer("O", _console);
                     SelectMarker();
                     Play();
                     break;
@@ -92,7 +96,7 @@ namespace tictactoe
             do
             {
                 GetCurrentPlayer();
-                int position = currentPlayer.GetMove();
+                int position = currentPlayer.GetMove(_board);
                 if (moves.ValidMove(_board, position))
                 {
                     _board.UpdateBoard(position, currentPlayer);
@@ -110,6 +114,7 @@ namespace tictactoe
             {
                 _console.DisplayText($"Game Over. {currentPlayer._marker} is the winner.");
             }
+
             if (_rules.Draw(_board))
             {
                 _console.DisplayText("Game is Draw!");

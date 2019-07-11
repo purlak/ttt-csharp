@@ -1,6 +1,7 @@
 ﻿using System;
 using Xunit;
 using System.Collections.Generic;
+using Xunit.Abstractions;
 
 namespace tictactoe.Tests
 {
@@ -21,6 +22,26 @@ namespace tictactoe.Tests
             player1 = new Player("X", console);
             player2 = new Player("O", console);
             game = new Game(console, rules, player1, player2);
+        }
+
+        [Fact]
+        public void GameMenuDisplaysHumanvHumanOption()
+        {
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.Menu();
+
+            Assert.Contains("1. Human v. Human", console.CaptureOutput);
+        }
+
+        [Fact]
+        public void GameMenuDisplaysHumanvAiOption()
+        {
+            console.setUserInputs(new List<string> { "1", "2", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.Menu();
+
+            Assert.Contains("2. Human v. Ai", console.CaptureOutput);
         }
 
         [Fact]
@@ -139,13 +160,8 @@ namespace tictactoe.Tests
         [Fact]
         public void GamePlayChecksForDraw()
         {
-            board.cells = new string[] {
-                    "X", "O", "X",
-                    "X", "O", "O",
-                    "O", "X", "X"};
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
-            game.SetBoard(board);
             game.Menu();
 
             Assert.True(rules.DrawIsCalled);
@@ -154,13 +170,8 @@ namespace tictactoe.Tests
         [Fact]
         public void GamePlayChecksForWon()
         {
-            board.cells = new string[] {
-                    "X", "O", "X",
-                    "O", "X", "O",
-                    "X", "O", "X"};
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
-            game.SetBoard(board);
             game.Menu();
 
             Assert.True(rules.WonIsCalled);
@@ -169,14 +180,11 @@ namespace tictactoe.Tests
         [Fact]
         public void GamePlayDisplaysDraw()
         {
-            board.cells = new string[] {
-                    "X", "O", "X",
-                    "X", "O", "O",
-                    "O", "X", "X"};
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "5", "6", "9", "8", "7", "4" });
 
-            game.SetBoard(board);
             game.Menu();
+
+            board = game.GetBoard();
 
             Assert.Contains("Game is Draw!", console.CaptureOutput);
         }
@@ -184,13 +192,8 @@ namespace tictactoe.Tests
         [Fact]
         public void GamePlayDisplaysWin()
         {
-            board.cells = new string[] {
-                    "X", "O", "X",
-                    "O", "X", "O",
-                    "X", "O", "X"};
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
-            game.SetBoard(board);
             game.Menu();
 
             Assert.Contains("O is the winner", console.CaptureOutput);
