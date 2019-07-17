@@ -15,7 +15,7 @@ namespace tictactoe
 
         public virtual int GetMove(Board board)
         {
-            _console.DisplayText("Enter Board Position [1-9]: ");
+            _console.DisplayText(Resources.EnterPosition);
 
             return Int32.Parse(_console.GetInput());
         }
