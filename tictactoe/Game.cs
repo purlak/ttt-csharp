@@ -69,7 +69,7 @@ namespace tictactoe
 			}
 		}
 
-		public void UserInput()
+		private void UserInput()
 		{
 			_console.DisplayText(Resources.SelectOption);
 			string input = _console.GetInput();
@@ -91,7 +91,7 @@ namespace tictactoe
 			}
 		}
 
-		public void SelectMarker()
+		private void SelectMarker()
 		{
 			_console.DisplayText(Resources.SelectMarker);
 			string input = _console.GetInput();
@@ -110,7 +110,7 @@ namespace tictactoe
 			}
 		}
 
-		public void Play()
+		private void Play()
 		{
 			_console.DisplayBoard(_board);
 			do

@@ -4,9 +4,9 @@ namespace tictactoe
 {
     public class AiPlayer : Player
     {
-        new public string _marker;
+        new private string _marker;
         public int aiInput = 1;
-        Moves moves;
+        private Moves moves;
 
         public AiPlayer(string marker, IUserInterface console) : base(marker, console)
         {

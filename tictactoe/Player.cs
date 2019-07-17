@@ -5,7 +5,7 @@ namespace tictactoe
     public class Player
     {
         public string _marker;
-        public IUserInterface _console;
+        private IUserInterface _console;
 
         public Player(string marker, IUserInterface console)
         {

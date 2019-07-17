@@ -24,7 +24,7 @@ namespace tictactoe
             return Between(input) && !Taken(board, input);
         }
 
-        public string GetPosition(Board board, int input)
+        private string GetPosition(Board board, int input)
         {
             return (board.cells[input - 1]);
         }
@@ -34,7 +34,7 @@ namespace tictactoe
             return (cells.Count(cell => cell == "X" || cell == "O"));
         }
 
-        public bool Between(int input)
+        private bool Between(int input)
         {
             return 1 <= input && input <= 9;
         }
