@@ -20,7 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources.Designer.cs">
-      <DependentUpon>Resources.en.resx</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources.hi.Designer.cs">
       <DependentUpon>Resources.hi.resx</DependentUpon>
