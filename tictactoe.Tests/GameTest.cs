@@ -83,7 +83,7 @@ namespace tictactoe.Tests
 
             game.Menu();
 
-            Assert.True(console.NumTimesGetInputIsCalled > 8);
+            Assert.True(console.NumTimesGetInputIsCalled > 7);
         }
 
         [Fact]
