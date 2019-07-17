@@ -17,14 +17,10 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.hi.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Update="Resources.en.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Resources.Designer.cs">
-      <DependentUpon>Resources.en.resx</DependentUpon>
+      <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Update="Resources.hi.Designer.cs">
       <DependentUpon>Resources.hi.resx</DependentUpon>
