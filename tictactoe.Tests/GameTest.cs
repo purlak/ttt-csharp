@@ -48,7 +48,7 @@ namespace tictactoe.Tests
         public void GamePlaysThroughTheWholeGameTest()
         {
 
-            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.Menu();
             Board gameBoard = game.GetBoard();
@@ -59,7 +59,7 @@ namespace tictactoe.Tests
         [Fact]
         public void GameCallsConsoleDisplayBoardTest()
         {
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.Menu();
 
@@ -90,7 +90,7 @@ namespace tictactoe.Tests
         [Fact]
         public void GameAllowsPlayer1ToHaveMarkerOAndPlayer2ToHaveMarkerX()
         {
-            console.setUserInputs(new List<string> { "1", "2", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "2", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.Menu();
 
@@ -149,7 +149,7 @@ namespace tictactoe.Tests
                     "X", "O", "X",
                     " ", " ", " ",
                     " ", " ", " "};
-            console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+            console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.SetBoard(board);
             game.Menu();
