@@ -67,6 +67,16 @@ namespace tictactoe.Tests
         }
 
         [Fact]
+        public void GameMenuDisplaysHindiLanguageOptions()
+        {
+            console.setUserInputs(new List<string> { "1", "2", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.Menu();
+
+            Assert.Contains("1. English 2. हिंदी", console.CaptureOutput);
+        }
+
+        [Fact]
         public void GameGetsInputFromPlayerToSelectMarker()
         {
             console.setUserInputs(new List<string> { "1", "2", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
@@ -178,7 +188,7 @@ namespace tictactoe.Tests
         }
 
         [Fact]
-        public void GamePlayDisplaysDraw()
+        public void GamePlayDisplaysDrawInEnglish()
         {
             console.setUserInputs(new List<string> { "1", "1", "1", "2", "3", "5", "6", "9", "8", "7", "4" });
 
@@ -190,13 +200,35 @@ namespace tictactoe.Tests
         }
 
         [Fact]
-        public void GamePlayDisplaysWin()
+        public void GamePlayDisplaysDrawInHindi()
+        {
+            console.setUserInputs(new List<string> { "2", "1", "1", "2", "3", "5", "6", "9", "8", "7", "4" });
+
+            game.Menu();
+
+            board = game.GetBoard();
+
+            Assert.Contains("खेल ड्रा है!", console.CaptureOutput);
+        }
+
+        [Fact]
+        public void GamePlayDisplaysWinInEnglish()
         {
             console.setUserInputs(new List<string> { "1", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
             game.Menu();
 
             Assert.Contains("O is the winner", console.CaptureOutput);
+        }
+
+        [Fact]
+        public void GamePlayDisplaysWinInHindi()
+        {
+            console.setUserInputs(new List<string> { "2", "1", "2", "3", "4", "5", "6", "7", "8", "9" });
+
+            game.Menu();
+
+            Assert.Contains("विजेता है", console.CaptureOutput);
         }
     }
 }
